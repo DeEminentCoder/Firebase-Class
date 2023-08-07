@@ -8,6 +8,7 @@
 <body>
   <h1> My first Firebase Class</h1>
   <button id="signInBtn">Sign in With Google</button>
+  <div id="disp"></div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
@@ -32,6 +33,16 @@
       signInWithPopup(auth,provider)
       .then((response)=>{
         console.log(response);
+        disp.innerHTML = `
+          <h1>
+            Welcome, ${response.user.displayName}
+            </h1>
+          <h1>
+            Welcome, ${response.user.email}
+            </h1>
+            <img src='${response.user.photoURL}'/>
+        `
+        
       })
     });
   </script>
