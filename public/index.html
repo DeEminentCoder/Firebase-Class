@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1> My first Firebase Class</h1>
-  <button id="signInBtn">Sign in With Google</button>
-  <div id="disp"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My first Firebase Class</h1>
+    <button id="signInBtn">Sign in With Google</button>
+    <div id="disp"></div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import {GoogleAuthProvider, getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import {
+        GoogleAuthProvider,
+        getAuth,
+        signInWithPopup,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
+      const firebaseConfig = {
+        apiKey: "AIzaSyCuaailRBt269779d7zqWT0A7LtL6nPmqI",
+        authDomain: "first-b5484.firebaseapp.com",
+        projectId: "first-b5484",
+        storageBucket: "first-b5484.appspot.com",
+        messagingSenderId: "880519898296",
+        appId: "1:880519898296:web:ac143d03cf5f805a83004d",
+      };
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCuaailRBt269779d7zqWT0A7LtL6nPmqI",
-      authDomain: "first-b5484.firebaseapp.com",
-      projectId: "first-b5484",
-      storageBucket: "first-b5484.appspot.com",
-      messagingSenderId: "880519898296",
-      appId: "1:880519898296:web:ac143d03cf5f805a83004d"
-    };
-  
-    const app = initializeApp(firebaseConfig);
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth()
+      const app = initializeApp(firebaseConfig);
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth();
 
-    document.getElementById('signInBtn').addEventListener("click",()=>{
-      // alert("Hey")
-      signInWithPopup(auth,provider)
-      .then((response)=>{
-        console.log(response);
-        disp.innerHTML = `
+      document.getElementById("signInBtn").addEventListener("click", () => {
+        // alert("Hey")
+        signInWithPopup(auth, provider).then((response) => {
+          console.log(response);
+          disp.innerHTML = `
           <h1>
             Welcome, ${response.user.displayName}
             </h1>
           <h1>
-            Welcome, ${response.user.email}
+            ${response.user.email}
             </h1>
             <img src='${response.user.photoURL}'/>
         `
-        
-      })
-    });
-  </script>
-</body>
+        window.location.href = "dashboard.html"
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+      });
+    </script>
+  </body>
 </html>
