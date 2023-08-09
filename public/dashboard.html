@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Welcome to dashboard</h1>
-</body>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCuaailRBt269779d7zqWT0A7LtL6nPmqI",
+        authDomain: "first-b5484.firebaseapp.com",
+        projectId: "first-b5484",
+        storageBucket: "first-b5484.appspot.com",
+        messagingSenderId: "880519898296",
+        appId: "1:880519898296:web:ac143d03cf5f805a83004d",
+      };
+
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const uid = user.uid;
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+  </body>
 </html>
