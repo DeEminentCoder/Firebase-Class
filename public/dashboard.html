@@ -27,10 +27,13 @@
 
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const uid = user.uid;
-        } else {
-        }
+        console.log(user)
+        // if (user) {
+        //   disp.innerHTML = `<h1> Welcome, ${user.displayName}</h1>`
+        // } else {
+        //     console.log("user not signed in");
+        //     window.location.href = "index.html"
+        // }
       });
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
